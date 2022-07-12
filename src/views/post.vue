@@ -20,7 +20,6 @@ export default {
       post: [],
     }
   },
-  props: ['cid'],
   methods: {
     getData () {
       var api = 'https://zburu.com/api/posts.php?cid=' + cid;
