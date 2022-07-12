@@ -1,8 +1,8 @@
-# vue-blog
+# Vue-Blog
 
-> A Vue.js project
+后端使用 Typecho 获取接口，前端使用 Vue + Element 渲染数据。
 
-## Build Setup
+## Use
 
 ``` bash
 # install dependencies
@@ -21,3 +21,5 @@ npm run build --report
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
 ## License
+
+[Apache License](./License)
