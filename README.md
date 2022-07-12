@@ -2,7 +2,8 @@
 
 后端使用 Typecho 获取接口，前端使用 Vue + Element 渲染数据。
 
-Github: [https://github.com/98fuel/vue-blog](https://github.com/98fuel/vue-blog)
+Github: [https://github.com/98fuel/vue-blog](https://github.com/98fuel/vue-blog)  
+测试网址: [https://vue-blog-zburu.vercel.app](https://vue-blog-zburu.vercel.app)
 
 ## Use
 
