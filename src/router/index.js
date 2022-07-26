@@ -13,7 +13,7 @@ export default new Router({
       name: 'index',
       component: index
     },{
-      path: '/post:cid',
+      path: '/post/:cid',
       name: 'post',
       component: post
     }
