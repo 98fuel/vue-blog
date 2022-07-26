@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import marked from 'marked';
 import '@/assets/style.css'
 export default {
   name: 'App'
@@ -13,7 +14,6 @@ export default {
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;

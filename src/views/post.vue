@@ -1,19 +1,33 @@
 <template>
-  <div class="posts">
-    <div v-for="(item) in indexlist" :key="item.cid">
-      <h3>{{ item.title }}</h3>
-      <p>{{ item.created }}</p>
-      <p>{{ item.text }}</p>
+  <div class="home" v-loading.fullscreen.lock="fullscreenLoading">
+    <Sidebar />
+    <div class="main">
+      <div class="container">
+        <div v-for="(item) in indexlist" :key="item.cid">
+          <h3>{{ item.title }}</h3>
+          <p class="posts-meta">发布于 {{ item.created }} / tags: {{ item.tags }} / views: {{ item.views }}</p>
+          <div class="posts-content markdown-body" v-highlight>{{ item.text }}</div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import Sidebar from '@/components/Sidebar'
+// 将marked 引入
+import { marked } from 'marked';
+// 引入代码高亮样式
+// import "highlight.js/styles/darcula.css";
 export default {
   name: 'post',
+  components: {
+    Sidebar,
+  },
   data() {
     return {
       indexlist: [],
+      fullscreenLoading: true,
     }
   },
   created() {
@@ -30,14 +44,8 @@ export default {
     }
     )
       .then((res) => {
+        this.fullscreenLoading = false;
         this.indexlist = res.data;
-        // this.indexlist.forEach(item => {
-        //   if (item.cid === this.GoodsCodeid) {
-        //     this.indexlist = item
-        //   }
-        // })
-        const post = this.indexlist
-        console.log(post)
         console.log(this.indexlist)
       })
       .catch((error) => {
@@ -49,5 +57,20 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+h3 {
+  font-size: 1.6rem;
+  margin: 0 0 20px;
+  padding-top: 10px;
+}
+
+.posts-meta {
+  border-bottom: 1px solid #eee;
+}
+
+.posts-content {
+  margin-top: 20px;
+  line-height: 1.8;
+  font-size: 17px;
+}
 </style>

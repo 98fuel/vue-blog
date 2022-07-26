@@ -1,15 +1,11 @@
 <template>
-  <div class="home">
+  <div class="home" v-loading.fullscreen.lock="fullscreenLoading">
     <Sidebar />
     <div class="main">
-      <!-- <h1>My blog</h1> -->
       <div class="list">
-        <div class="list-item" v-for="item in list" :key="item.cid">
-          <div @click="dianji(item.cid)">
-            <p>{{ item.title }}</p>
-            <span>{{ item.created }}</span>
-          </div>
-
+        <div class="list-item" v-for="item in list" :key="item.cid" @click="details(item.cid)">
+          <p class="list-title">{{ item.title }}</p>
+          <span class="list-date">{{ item.created }}</span>
         </div>
       </div>
     </div>
@@ -26,25 +22,24 @@ export default {
   },
   data() {
     return {
-      list: []
+      list: [],
+      fullscreenLoading: true,
     }
   },
   methods: {
     getData() {
       const api = 'https://zburu.com/api/posts.php';
       Axios.get(api).then((response) => {
+        this.fullscreenLoading = false;
         this.list = response.data;
         // console.log(response.data);
-
       }).catch((error) => {
         console.log(error);
       })
     },
-    dianji(cid) {
-      console.log(cid, 444);  // 这里的id就是我们上面传下来的id 
-      let GoodsCodeid = cid  //把id重新赋值
-      //这里就是跳转name: "miun"是指跳转到miun页面上面
-      //query: { id: GoodsCodeid}就是我们跳转过去需要带的参数
+    details(cid) {
+      console.log(cid, 444);
+      let GoodsCodeid = cid
       this.$router.push({ name: "post", query: { cid: GoodsCodeid } });
     },
   },
@@ -54,34 +49,32 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .main {
   padding-bottom: 30px;
 }
 
-h1 {
-  text-align: center;
-}
-
-.list {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
 .list-item {
   border-bottom: 1px solid #eee;
-}
-
-.list-item a {
   color: #2c3e50;
   display: flex;
   justify-content: space-between;
-  padding: 8px 16px;
-  font-size: 17px;
+  align-items: center;
+  padding: 12px 20px;
   transition: all 0.2s linear;
 }
 
-.list-item a:hover {
-  background: #eee;
+.list-item:hover {
+  cursor: pointer;
+  background: #f3f3f3;
+}
+
+.list-title {
+  font-size: 18px;
+}
+
+.list-date {
+  color: #999;
+  font-size: 16px;
 }
 </style>
