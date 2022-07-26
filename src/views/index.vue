@@ -60,7 +60,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 20px;
+  padding: 14px 20px;
   transition: all 0.2s linear;
 }
 
@@ -70,11 +70,19 @@ export default {
 }
 
 .list-title {
+  margin: 0;
   font-size: 18px;
 }
 
 .list-date {
   color: #999;
   font-size: 16px;
+}
+
+@media(max-width:950px) {
+  .list-item {
+    flex-direction: column;
+    align-items: baseline;
+  }
 }
 </style>

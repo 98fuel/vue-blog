@@ -5,8 +5,11 @@
       <div class="container">
         <div v-for="(item) in indexlist" :key="item.cid">
           <h3>{{ item.title }}</h3>
-          <p class="posts-meta">发布于 {{ item.created }} / tags: {{ item.tags }} / views: {{ item.views }}</p>
-          <div class="posts-content markdown-body" v-highlight>{{ item.text }}</div>
+          <div class="posts-meta">发布于 {{ item.created }} / views: {{ item.views }}</div>
+          <div class="posts-content markdown-body">{{ item.text }}</div>
+          <div class="meta-bottom">
+            tags: {{ item.tags }}
+          </div>
         </div>
       </div>
     </div>
@@ -18,7 +21,7 @@ import Sidebar from '@/components/Sidebar'
 // 将marked 引入
 import { marked } from 'marked';
 // 引入代码高亮样式
-// import "highlight.js/styles/darcula.css";
+// 
 export default {
   name: 'post',
   components: {
@@ -52,7 +55,11 @@ export default {
         console.log(error);
       });
   },
-
+  computed: {
+    markdownToHtml() {
+      return marked;
+    }
+  }
 
 }
 </script>
@@ -66,11 +73,18 @@ h3 {
 
 .posts-meta {
   border-bottom: 1px solid #eee;
+  padding-bottom: 6px;
 }
 
 .posts-content {
   margin-top: 20px;
   line-height: 1.8;
   font-size: 17px;
+  padding-bottom: 20px;
+}
+
+.meta-bottom {
+  padding-top: 10px;
+  border-top: 1px solid #eee;
 }
 </style>

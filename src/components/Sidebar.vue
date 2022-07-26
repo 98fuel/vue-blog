@@ -51,6 +51,7 @@ export default {
 	border: 1px solid #eee;
 	background: #fff;
 	padding-top: 30px;
+	box-shadow: 0px 1px 2px 1px rgb(0 0 0 / 10%);
 }
 
 .sidebar .el-radio-button.is-active {
@@ -68,5 +69,23 @@ export default {
 
 .author-img {
 	text-align: center;
+}
+
+@media(max-width:950px) {
+	.sidebar {
+		padding: 0 20px;
+		height: auto;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+	}
+
+	.el-menu {
+		display: flex;
+		width: 100%;
+		flex: 1;
+		text-align: right;
+	}
 }
 </style>

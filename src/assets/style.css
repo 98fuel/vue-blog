@@ -14,6 +14,7 @@ body {
   font-family: "sourcehansanscn";
   background: #eee;
   min-height: 100vh;
+  word-break: break-all;
 }
 
 p {
@@ -32,13 +33,21 @@ a {
   max-width: 800px;
   margin: 0 auto;
   background: #fff;
-  border-radius: 6px;
   box-shadow: 0px 1px 6px 1px rgb(0 0 0 / 20%);
   padding: 20px 0;
   box-sizing: border-box;
   min-height: 100vh;
 }
-
+.main {
+  padding-bottom: 20px;
+}
 .container {
   padding: 0 20px;
+}
+
+@media (max-width: 950px) {
+  .home {
+    max-width: 100%;
+    margin-top: 70px;
+  }
 }
