@@ -18,7 +18,7 @@ export default {
     }
   },
   created() {
-    console.log(this.$route.query.cid, 7777);  //首先在created里面打印一下id是传过来了     
+    console.log(this.$route.query.cid);  //首先在created里面打印一下cid是传过来了     
     this.GoodsCodeid = this.$route.query.cid
   },
   mounted() {
