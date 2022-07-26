@@ -1,6 +1,6 @@
 <template>
   <div class="posts">
-    <div v-for="(item) in post" :key="item.cid">
+    <div v-for="(item) in indexlist" :key="item.cid">
       <h3>{{ item.title }}</h3>
       <p>{{ item.created }}</p>
       <p>{{ item.text }}</p>
@@ -9,35 +9,36 @@
 </template>
 
 <script>
-import Axios from 'axios';
 export default {
   name: 'post',
   data() {
     return {
-      post: [],
+      indexlist: [],
     }
   },
   created() {
-    console.log(this.$route.query.cid);  //首先在created里面打印一下cid是传过来了     
+    console.log(this.$route.query.cid);
     this.GoodsCodeid = this.$route.query.cid
   },
   mounted() {
-    const api = 'https://zburu.com/api/posts.php?cid=' + this.GoodsCodeid;
+    const api = 'https://zburu.com/api/posts.php';
     //发送axios  get请求
-    this.$axios.get(api, {  //api 是我的请求url          
+    this.$axios.get(api, {
       params: {
-        GoodsCodeid: this.GoodsCodeid
+        cid: this.GoodsCodeid
       },
-    })
+    }
+    )
       .then((res) => {
         this.indexlist = res.data;
-        this.indexlist.forEach(item => {
-          if (item.cid === this.GoodsCodeid) {
-            this.indexlist = item
-          }
-        })
+        // this.indexlist.forEach(item => {
+        //   if (item.cid === this.GoodsCodeid) {
+        //     this.indexlist = item
+        //   }
+        // })
         const post = this.indexlist
         console.log(post)
+        console.log(this.indexlist)
       })
       .catch((error) => {
         console.log(error);
