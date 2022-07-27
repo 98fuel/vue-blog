@@ -10,12 +10,14 @@
 		<el-menu :default-active="this.$router.path" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
 			:collapse="isCollapse" router>
 			<el-menu-item index="/">
-				<i class="el-icon-s-home"></i>
-				<span slot="title">首页</span>
+				<i>home</i>
+				<!-- <i class="el-icon-s-home"></i>
+				<span slot="title">首页</span> -->
 			</el-menu-item>
 			<el-menu-item index="/about">
-				<i class="el-icon-document"></i>
-				<span slot="title">关于</span>
+				<i>about</i>
+				<!-- <i class="el-icon-document"></i>
+				<span slot="title">关于</span> -->
 			</el-menu-item>
 		</el-menu>
 	</div>
@@ -67,6 +69,11 @@ export default {
 	border: none;
 }
 
+.el-menu-item {
+	padding: 0 !important;
+	text-align: center;
+}
+
 .author-img {
 	text-align: center;
 }
@@ -86,6 +93,10 @@ export default {
 		width: 100%;
 		flex: 1;
 		text-align: right;
+	}
+
+	.el-menu-item {
+		margin-left: 20px;
 	}
 }
 </style>
