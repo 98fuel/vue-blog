@@ -5,7 +5,8 @@
 </template>
 
 <script>
-import marked from 'marked';
+import 'highlight.js/styles/github.css'
+import 'github-markdown-css'
 import '@/assets/style.css'
 export default {
   name: 'App'

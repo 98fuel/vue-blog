@@ -19,7 +19,7 @@
 <script>
 import Sidebar from '@/components/Sidebar'
 // 将marked 引入
-import { marked } from 'marked';
+import marked from 'marked'
 // 引入代码高亮样式
 // 
 export default {
@@ -38,7 +38,7 @@ export default {
     this.GoodsCodeid = this.$route.query.cid
   },
   mounted() {
-    const api = 'https://zburu.com/api/posts.php';
+    const api = 'https://zburu.com/api/posts.php?type=post&';
     //发送axios  get请求
     this.$axios.get(api, {
       params: {
@@ -55,11 +55,7 @@ export default {
         console.log(error);
       });
   },
-  computed: {
-    markdownToHtml() {
-      return marked;
-    }
-  }
+
 
 }
 </script>

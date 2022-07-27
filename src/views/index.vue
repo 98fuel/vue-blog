@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     getData() {
-      const api = 'https://zburu.com/api/posts.php';
+      const api = 'https://zburu.com/api/posts.php?type=post';
       Axios.get(api).then((response) => {
         this.fullscreenLoading = false;
         this.list = response.data;
